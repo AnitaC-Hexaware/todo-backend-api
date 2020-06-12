@@ -22,7 +22,10 @@ const db = require('./config/db').database;
 
 //Database Connection
 mongoose.connect(process.env.MONGODB_CONNECTION_STRING, {
-    useNewUrlParser: true
+    useNewUrlParser: true,
+    useUnifiedTopology:true,
+    useFindAndModify:false 
+
 })
 .then(()=> {
 console.log('Database connected successfully')
@@ -35,7 +38,7 @@ console.log('Database connected successfully')
 
 //due to availability of n number of ports like AWS/Git which we are unsure of
 //so this process happens automatically
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 9000;
 
 //Initialise cors middleware
 app.use(cors());
