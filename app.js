@@ -18,10 +18,10 @@ const app = express();
 //import the db here
 const db = require('./config/db').database;
 */
-/*
+
 
 //Database Connection
-mongoose.connect(db, {
+mongoose.connect(process.env.MONGODB_CONNECTION_STRING, {
     useNewUrlParser: true
 })
 .then(()=> {
@@ -30,7 +30,7 @@ console.log('Database connected successfully')
 .catch((err)=>{
     console.log('Unable to connect with the database',err)
 });
-*/
+
 //Defining the port
 
 //due to availability of n number of ports like AWS/Git which we are unsure of
@@ -46,11 +46,6 @@ app.use(cors());
 //used to modify req and res objects for tasks like parsing request bodies, adding response headers, etc.
 app.use(bodyParser.json());
 
-//Initialise public directory
-/*app.get('*',(req,res)=> {
-    res.sendFile(path.join(__dirname,'public/index.html'));
-});
-*/
 app.get('/',(req,res)=>{
     res.send('<h1>Hello World</h1>');
 }); 
