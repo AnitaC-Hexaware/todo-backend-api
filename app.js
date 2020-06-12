@@ -19,14 +19,11 @@ const app = express();
 const db = require('./config/db').database;
 */
 
-
 //Database Connection
-mongoose.connect(process.env.MONGODB_CONNECTION_STRING, {
- 
+mongoose.connect(process.env.ToDo_api_app, {
     useNewUrlParser: true,
-   useUnifiedTopology:true,
+   useUnifiedTopology:true
    // useFindAndModify:false 
-
 })
 .then(()=> {
 console.log('Database connected successfully')
