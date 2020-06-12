@@ -22,7 +22,7 @@ router.post('/add',(req,res,next)=> {
         body:body
     })
     if( newPost.save()) {
-        res.status(201).json(post)
+        res.status(201).json(newPost)
     }else
    res.status(404).send('error')
 })
