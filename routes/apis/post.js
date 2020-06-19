@@ -61,7 +61,7 @@ if(post!=null){
 //make delete request
 router.delete('/:id',async(req,res) => {
     let id= req.params.id;
-    Post.findById(id, function (err) {
+    Post.findByIdAndRemove(id, function (err) {
         if(err)
             return res.status(404).json({message: 'Delete unsuccessful'});
        res.send('Post deleted successfully!')
