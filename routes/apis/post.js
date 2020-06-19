@@ -5,9 +5,8 @@ const router= express.Router();
 const Post = require('../../models/Post');
 
 //get all the posts
-router.get('/',(req,res)=> {
-
-const post = Post.find()
+router.get('/',async (req,res)=> {
+const post = await Post.find()
 if(post.length>0){
 res.json(post)
 }else{
@@ -16,8 +15,8 @@ res.json(post)
 })
 
 //get a post by id
-router.get('/:id',(req,res) =>{
-    const post = Post.findById(req.params.id)
+router.get('/:id', async(req,res) =>{
+    const post = await Post.findById(req.params.id)
     if(post !=null){
         res.status(200).json(post)
     }
@@ -40,11 +39,11 @@ router.post('/add',(req,res)=> {
 })
 
 //to update a post
-router.put('/update/:id',(req,res) => {
+router.put('/update/:id',async(req,res) => {
 
 let id= req.params.id;
 
-const post = Post.findById(id)
+const post = await Post.findById(id)
 if(post!=null){
     post.title=req.body.title;
     post.body = req.body.body;
@@ -60,7 +59,7 @@ if(post!=null){
     })
 
 //make delete request
-router.delete('/:id',(req,res,next) => {
+router.delete('/:id',async(req,res) => {
     let id= req.params.id;
     Post.findById(id, function (err) {
         if(err)
