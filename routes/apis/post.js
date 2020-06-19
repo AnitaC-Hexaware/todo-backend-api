@@ -6,12 +6,24 @@ const Post = require('../../models/Post');
 
 //get all the posts
 router.get('/',(req,res,next)=> {
-Post.find()
-if(this.post.length>0){
+//Post.find()
+const post = Post.find()
+if(post.length>0){
 res.json(post)
 }else{
     res.status(404).json({message:'Its empty..Add some..'})
 }
+})
+
+//get a post by id
+router.get('/:id',(req,res,next) =>{
+    const post = Post.findById(req.params.id)
+    if(post !=null){
+        res.status(200).json(post)
+    }
+    else{
+        res.status(404).json({error:'Doesnt exists.Try with something else ...'})
+    }
 })
 //create a post
 router.post('/add',(req,res,next)=> {

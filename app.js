@@ -8,8 +8,9 @@ const mongoose = require('mongoose');
 const cors = require('cors');    // Cross-Origin Resource Sharing (CORS) is a mechanism that 
                                  //uses additional HTTP headers to tell browsers to give a web application running at one origin, 
                                    //access to selected resources from a different origin
-const path=require("path");
-require('dotenv').config()
+//app.use(morgan('dev'));
+ const path=require("path");
+require('dotenv').config();
 
 //initialise the app.js
 const app = express();
